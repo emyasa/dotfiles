@@ -42,7 +42,7 @@ return require('packer').startup(function(use)
     use 'windwp/nvim-autopairs'
 
     -- auto-complete
-   use {
+    use {
         "hrsh7th/nvim-cmp",
         requires = {
             "hrsh7th/cmp-nvim-lsp",
@@ -57,4 +57,8 @@ return require('packer').startup(function(use)
         }
     }
 
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 end)
