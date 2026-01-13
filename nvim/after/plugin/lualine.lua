@@ -1,8 +1,8 @@
 
 require('lualine').setup({
     sections = {
-        lualine_a = { "mode" },
-        lualine_b = {},
+        lualine_a = { {"mode", separator = { right = "", left = "" }} },
+        lualine_b = { {"branch", separator = { right = "", left = "" }} },
         lualine_c = {
             { "filename", path = 1 },
         },
@@ -10,9 +10,8 @@ require('lualine').setup({
         lualine_x = {},
         lualine_y = {},
         lualine_z = {
-            { "branch", separator = { left = "", right = "" } },
             {
-                "diff",
+                "diff", separator = {right = "", left = ""},
                 color = { bg = "#3c1f1f" },
                 symbols = { added = "+", modified = "~", removed = "-" },
                 source = function()
