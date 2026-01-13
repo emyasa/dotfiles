@@ -1,5 +1,5 @@
 iterm2/
 rclone/
 .DS_Store
-nvim/plugin/
+/nvim/plugin/**
 
