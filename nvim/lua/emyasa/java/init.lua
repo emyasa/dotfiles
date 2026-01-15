@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
       return
     end
 
-    require("java.new_type").generate()
+    require("emyasa.java.new_type").generate()
   end,
 })
 
@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "java",
   callback = function()
     local ok, err = pcall(function()
-      require("java.jdtls").setup()
+      require("emyasa.java.jdtls").setup()
     end)
 
     if not ok then
@@ -29,6 +29,4 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
-
-print("loaded java")
 

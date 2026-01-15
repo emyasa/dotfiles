@@ -1,4 +1,4 @@
-require("misc")
-require("java")
+require("emyasa")
 
 print("loaded root init.lua")
+
