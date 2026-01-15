@@ -30,6 +30,7 @@ local function setup_keymaps(bufnr)
     map("<leader>gd", vim.lsp.buf.definition, "Go to definition")
     map("<leader>gr", vim.lsp.buf.references, "Go to references")
     map("<leader>gi", vim.lsp.buf.implementation, "Go to implementation")
+    map("<leader>rn", vim.lsp.buf.rename, "LSP rename")
 end
 
 function M.setup()
