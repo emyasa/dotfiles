@@ -13,15 +13,11 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-
     -- color schemes
-    use({ "rose-pine/neovim", as = "rose-pine" })
     use({ "rebelot/kanagawa.nvim", as = "kanagawa" })
-    use({ "folke/tokyonight.nvim", as = "tokyonight" })
 
-
+    -- lsp
     use ({'nvim-treesitter/nvim-treesitter', branch='master', run = ':TSUpdate'})
-
     use { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' }
 
     -- file-trees
@@ -39,6 +35,7 @@ return require('packer').startup(function(use)
     use 'mason-org/mason.nvim'
     use 'mfussenegger/nvim-jdtls'
     use 'neovim/nvim-lspconfig'
+
     use 'windwp/nvim-autopairs'
 
     -- auto-complete
@@ -56,11 +53,4 @@ return require('packer').startup(function(use)
             "rafamadriz/friendly-snippets",
         }
     }
-
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }
-
-    use { "lewis6991/gitsigns.nvim" }
 end)
