@@ -56,6 +56,9 @@ require("nvim-tree").setup({
     notify = {
         threshold = vim.log.levels.ERROR,
     },
+    view = {
+        adaptive_size = true,
+    },
 })
 
 -- Flatten empty directories in nvim-tree
