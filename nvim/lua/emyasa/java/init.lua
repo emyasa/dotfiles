@@ -1,3 +1,5 @@
+require("emyasa.java.move_type")
+
 vim.api.nvim_create_autocmd("BufReadPost", {
     pattern = "*.java",
     callback = function(args)
