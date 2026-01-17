@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
     }
 
     -- file-explorer
-    use 'stevearc/oil.nvim'
+    use 'emyasa/oil.nvim'
 
     -- binary manager
     use 'mason-org/mason.nvim'
