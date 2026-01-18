@@ -51,7 +51,10 @@ function M.add(old_folder, old_package_name, bufnr)
 
     buffer.write_buffer_lines(buffer_content, bufnr)
     vim.api.nvim_buf_call(bufnr, function() 
-        vim.cmd("write")
+        local ok, err = pcall(vim.cmd, "silent! write!")
+        if not ok then
+            vim.notify("Failed to write buffer: " .. err, vim.log.levels.ERROR)
+        end
     end)
 end
 
@@ -76,7 +79,10 @@ function M.remove(new_folder, new_package_name, bufnr)
 
     buffer.write_buffer_lines(buffer_content, bufnr)
     vim.api.nvim_buf_call(bufnr, function() 
-        vim.cmd("write")
+        local ok, err = pcall(vim.cmd, "silent! write!")
+        if not ok then
+            vim.notify("Failed to write buffer: " .. err, vim.log.levels.ERROR)
+        end
     end)
 end
 

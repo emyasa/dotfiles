@@ -25,7 +25,10 @@ local function delete_references(new_folder, old_class_path)
 
         buffer.write_buffer_lines(result, bufnr)
         vim.api.nvim_buf_call(bufnr, function() 
-            vim.cmd("write")
+            local ok, err = pcall(vim.cmd, "silent! write!")
+            if not ok then
+                vim.notify("Failed to write buffer: " .. err, vim.log.levels.ERROR)
+            end
         end)
     end
 end
@@ -43,7 +46,10 @@ local function add_references(old_folder, new_class_path, old_class_name)
 
         buffer.write_buffer_lines(result, bufnr)
         vim.api.nvim_buf_call(bufnr, function() 
-            vim.cmd("write")
+            local ok, err = pcall(vim.cmd, "silent! write!")
+            if not ok then
+                vim.notify("Failed to write buffer: " .. err, vim.log.levels.ERROR)
+            end
         end)
     end
 end
@@ -54,7 +60,10 @@ local function replace_import_declaration(old_class_path, new_class_path, bufnr)
 
     buffer.replace_buffer(regex, "import " .. new_class_path .. ";", bufnr)
     vim.api.nvim_buf_call(bufnr, function() 
-        vim.cmd("write")
+        local ok, err = pcall(vim.cmd, "silent! write!")
+        if not ok then
+            vim.notify("Failed to write buffer: " .. err, vim.log.levels.ERROR)
+        end
     end)
 end
 

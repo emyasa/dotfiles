@@ -2,7 +2,7 @@ local M = {}
 
 local buffer = require("emyasa.java.move_type.buffer")
 
-local function generate_regex(class_name)
+function M.generate_regex(class_name)
     return string.format(
         "[%%s,;%%(}<]%s[%%s,;%%(}%%.>]",
         class_name
@@ -11,7 +11,7 @@ end
 
 function M.replace(old_class_name, new_class_name, bufnr)
     local bufnr = bufnr or 0
-    local regex = generate_regex(old_class_name)
+    local regex = M.generate_regex(old_class_name)
 
     local lines = buffer.read_buffer_lines(bufnr)
 
@@ -33,7 +33,10 @@ function M.replace(old_class_name, new_class_name, bufnr)
 
     buffer.write_buffer_lines(lines, bufnr)
     vim.api.nvim_buf_call(bufnr, function() 
-        vim.cmd("write")
+        local ok, err = pcall(vim.cmd, "silent! write!")
+        if not ok then
+            vim.notify("Failed to write buffer: " .. err, vim.log.levels.ERROR)
+        end
     end)
 end
 
