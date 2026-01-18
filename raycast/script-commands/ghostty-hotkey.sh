@@ -9,6 +9,24 @@
 # @raycast.icon 🤖
 
 osascript <<'EOF'
+tell application "System Events"
+    set ghosttyRunning to (name of processes) contains "Ghostty"
+end tell
+
+-- If Ghostty is running and has a window, bring to front and return early
+if ghosttyRunning then
+    tell application "System Events"
+        tell process "Ghostty"
+            if (count of windows) > 0 then
+                tell front window
+                    tell application "Ghostty" to activate
+                end tell
+                return
+            end if
+        end tell
+    end tell
+end if
+
 -- Activate Ghostty
 tell application "Ghostty"
 	activate
@@ -54,10 +72,10 @@ tell application "System Events"
 			set size to {targetWidth, screenHeight}
 		end tell
 
-        -- Type tmux and press enter
-		keystroke "tmux"
-		key code 36 -- enter key
-	end tell
+        -- Only run tmux if not already in tmux
+        keystroke "tmux new -A -s session"
+        key code 36 -- Enter
+    end tell
 end tell
 EOF
 
