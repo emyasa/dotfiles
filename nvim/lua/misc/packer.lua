@@ -15,20 +15,11 @@ return require('packer').startup(function(use)
 
     -- color schemes
     use({ "rebelot/kanagawa.nvim", as = "kanagawa" })
-    use { "catppuccin/nvim", as = "catppuccin" }
     use { "nickkadutskyi/jb.nvim", as = "jb" }
 
     -- lsp
     use ({'nvim-treesitter/nvim-treesitter', branch='master', run = ':TSUpdate'})
     use { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' }
-
-    -- file-trees
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional
-        },
-    }
 
     -- file-explorer
     use 'emyasa/oil.nvim'
