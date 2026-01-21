@@ -39,3 +39,8 @@ vim.diagnostic.config({
   update_in_insert = true,
 })
 
+vim.keymap.set("n", "K", function()
+  vim.lsp.buf.hover()
+  vim.cmd("normal! zz")
+end)
+
