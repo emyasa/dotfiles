@@ -13,6 +13,10 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
+    -- status line
+    use 'rebelot/heirline.nvim'
+    use 'lewis6991/gitsigns.nvim'
+
     -- color schemes
     use({ "rebelot/kanagawa.nvim", as = "kanagawa" })
     use { "nickkadutskyi/jb.nvim", as = "jb" }
