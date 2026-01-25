@@ -4,5 +4,8 @@ require("oil").setup({
     keymaps = {
         ["<C-c>"] = false,
     },
+    view_options = {
+        show_hidden = true,
+    },
 })
 
