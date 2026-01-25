@@ -28,3 +28,8 @@ function zle-line-init {
 zle -N zle-keymap-select
 zle -N zle-line-init
 
+export TERM=xterm-256color
+
+source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+source $(brew --prefix)/opt/fzf/shell/completion.zsh
+
