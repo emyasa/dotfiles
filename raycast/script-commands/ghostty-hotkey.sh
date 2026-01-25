@@ -11,68 +11,44 @@
 osascript <<'EOF'
 tell application "System Events"
     set ghosttyRunning to (name of processes) contains "Ghostty"
+    if ghosttyRunning then
+        tell process "Ghostty"
+            set windowCount to count of windows
+        end tell
+    end if
 end tell
 
--- If Ghostty is running and has a window, bring to front and return early
-if ghosttyRunning then
-    tell application "System Events"
-        tell process "Ghostty"
-            if (count of windows) > 0 then
-                tell front window
-                    tell application "Ghostty" to activate
-                end tell
-                return
-            end if
-        end tell
+if ghosttyRunning and windowCount > 0 then
+    tell application "Ghostty"
+        activate
+        return
     end tell
 end if
 
--- Activate Ghostty
-tell application "Ghostty"
-	activate
-end tell
-
-delay 0.3
-
+do shell script "open -a Ghostty"
 tell application "System Events"
-	tell process "Ghostty"
+    tell process "Ghostty"
 
-		-- If there are no windows, open a new one using menu
-		if (count of windows) is 0 then
-			tell menu bar 1
-				tell menu bar item "File"
-					tell menu "File"
-						click menu item "New Window"
-					end tell
-				end tell
-			end tell
-			delay 0.3
-		end if
+        repeat until (count of windows) > 0
+            delay 0.01
+        end repeat
 
-		-- Double-check if we now have a window
-		if (count of windows) is 0 then
-			return
-		end if
+        tell application "Finder"
+            set screenBounds to bounds of window of desktop
+        end tell
 
-		-- Get screen size
-		tell application "Finder"
-			set screenBounds to bounds of window of desktop
-		end tell
+        set screenWidth to item 3 of screenBounds
+        set screenHeight to item 4 of screenBounds
 
-		set screenWidth to item 3 of screenBounds
-		set screenHeight to item 4 of screenBounds
+        set targetWidth to screenWidth
+        set targetX to screenWidth - targetWidth
+        set targetY to 0
 
-		set targetWidth to screenWidth * 2 / 3
-		set targetX to screenWidth - targetWidth
-		set targetY to 0
+        tell front window
+            set position to {targetX, targetY}
+            set size to {targetWidth, screenHeight}
+        end tell
 
-		-- Resize the front window
-		tell front window
-			set position to {targetX, targetY}
-			set size to {targetWidth, screenHeight}
-		end tell
-
-        -- Only run tmux if not already in tmux
         keystroke "tmux new -A -s session"
         key code 36 -- Enter
     end tell
