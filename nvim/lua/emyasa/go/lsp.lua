@@ -1,5 +1,8 @@
 local mason_bin = vim.fn.stdpath("data") .. "/mason/bin/gopls"
 
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
+
 vim.lsp.config("gopls", {
   cmd = { mason_bin },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
