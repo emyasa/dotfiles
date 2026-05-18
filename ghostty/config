@@ -1,3 +1,4 @@
 font-family = "JetBrains Mono"
 cursor-color = "#FF0000"
+mouse-hide-while-typing = true
 
