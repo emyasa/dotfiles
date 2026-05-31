@@ -1,5 +1,8 @@
 iterm2/
 rclone/
+doom/
+emacs/
+opencode/
 .DS_Store
 /nvim/plugin/**
 
