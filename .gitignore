@@ -5,4 +5,5 @@ emacs/
 opencode/
 .DS_Store
 /nvim/plugin/**
-
+argocd/
+uv/
