@@ -1,4 +1,4 @@
-require("emyasa.go.lsp")
+require("emyasa.golang.lsp")
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "go", "gomod", "gowork", "gotmpl" },

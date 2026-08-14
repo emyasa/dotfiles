@@ -1,7 +1,7 @@
-require("emyasa.general")
+require("emyasa.clang")
+require("emyasa.golang")
 require("emyasa.java")
-require("emyasa.go")
-require("emyasa.clangd")
+require("emyasa.zz_general")
 
 print("loaded emyasa")
 

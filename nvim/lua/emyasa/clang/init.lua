@@ -1,4 +1,4 @@
-require("emyasa.clangd.lsp")
+require("emyasa.clang.lsp")
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "c", "cpp", "objc", "objcpp" },
