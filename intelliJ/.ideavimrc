@@ -1,0 +1,10 @@
+let mapleader=" "
+
+map <leader>pf <Action>(SearchEverywhere)
+map <leader>ps <Action>(FindInPath)
+
+map <leader>ca <Action>(ShowIntentionActions)
+map <leader>gd <Action>(GotoDeclaration)
+map <leader>gr <Action>(FindUsages)
+map <leader>gi <Action>(GotoImplementation)
+map <leader>rn <Action>(RenameElement)
